@@ -1,5 +1,6 @@
+from flask import Flask, request,json
+from flask_cors import CORS, cross_origin
 import dateutil.parser
-from flask import Flask, request, json
 import sqlite3
 import os.path
 
@@ -7,6 +8,8 @@ import fraudService
 import util
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 def hello_world():
@@ -16,12 +19,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(BASE_DIR, "db.sqlite")
 
 @app.route('/transactions',  methods=['GET'])
+@cross_origin()
 def get_transactions():
     responseData = util.get_transactions_db()
     return json.dumps(responseData)
 
 
 @app.route('/transactions', methods=['POST'])
+@cross_origin()
 def add_transaction():
     date = request.form["date"]
     try:

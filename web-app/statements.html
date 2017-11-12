@@ -1,0 +1,90 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="statements-style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="vue.js"></script>
+</head>
+<body>
+    <section id="tran">
+        <h1>Saved Balance: &pound;{{ saved_balance }}</h1>
+        <br><br><br>
+        <!--for demo wrap-->
+        <div class="container">
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Amount</th>
+                    <th>Merchant</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                <tr v-for="transaction in transactions">
+                    <td>{{ transaction.date }}</td>
+                    <td> &pound;{{ transaction.amount }}  <span class="badge">+ 0.1</span></td>
+                    <td>{{ transaction.merchant }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+            <br><br><br>
+        </div>
+
+        <div class="form-row cotainer make-transaction" >
+            <div class="form-group col-md-2">
+                <input v-model="transaction_amount" class="form-control" id="inputEmail4" placeholder="Amount">
+            </div>
+            <div class="form-group col-md-10">
+                <input v-model="transaction_merchant" class="form-control" placeholder="Merchant">
+            </div>
+            <button type="button" class="submit-transaction btn btn-success" v-on:click="makeTransaction()">Make Transaction</button>
+        </div>
+
+    </section>
+</body>
+</html>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+
+<script>
+var vm = new Vue({
+    el: '#tran',
+    data: {
+        transactions:[],
+        saved_balance: 10.30,
+        transaction_amount: null,
+        transaction_merchant: null
+    },
+    methods: {
+        updateItems: function(items) {
+            console.log(items[0]);
+            items = items.replace(/'/g, '"')
+            this.$data.transactions = JSON.parse(items);
+        },
+        makeTransaction: function () {
+            if (!(this.$data.transaction_amount === null && this.$data.transaction_merchant === null)) {
+                $.post()
+            }
+        }
+    }
+});
+
+$.get('http://localhost:5000/transactions', function(data) {
+    vm.updateItems(data);
+});
+</script>
