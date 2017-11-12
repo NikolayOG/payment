@@ -6,7 +6,8 @@ from sklearn.ensemble import IsolationForest
 def detect_fraud(data):
     clf = IsolationForest(max_samples=1000)
     X_train = pd.get_dummies(data)
+    del X_train['id']
     clf.fit(X_train)
     y_pred = clf.predict(X_train)
     #-1 fraud, 1 not fraud
-    return list(zip(X_train['id'], y_pred))
+    return list(zip(data['id'], y_pred))
