@@ -106,3 +106,7 @@ section{
     margin: 0 auto;
     font-size: 20px !important;
 }
+
+.fraud-style {
+    color: red;
+}
