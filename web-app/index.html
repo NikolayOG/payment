@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	 <link rel="stylesheet" href="style.css">
+  </head>
+  
+  <body>
+   <div class="flipper">
+   <div id="card"> 
+  <div class="card front"> 
+    <div class="fab"> + </div>
+	      <h1> ADD PAYMENT METHOD </h1>
+  </div> 
+  <div class="card back">
+    <div class="card-number-wrap">
+          <label class="input-title" for="c-number">
+             Card Number
+          </label>
+          <input type="text" name="c-number" id="c-number" class="input-field card-number" placeholder="XXXX XXXX XXXX XXXX" maxlength="16" required>
+        </div>
+		
+		
+		
+		<div class="card-expiry-wrap">
+          
+          
+          <div class="custom-dropdown">
+            <select name="month" class="input-field options" placeholder="MM">
+			  <option value="" >MM</option>
+              <option>01</option>
+              <option>02</option>
+              <option>03</option>
+              <option>04</option>
+              <option>05</option>
+              <option>06</option>
+              <option>07</option>
+              <option>08</option>
+              <option>09</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+            </select>
+          </div>
+
+          <div class="custom-dropdown">
+            <select name="year" class="input-field options">
+			<option value="" >YY</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+              <option>20</option>
+              <option>21</option>
+              <option>22</option>
+              <option>23</option>
+              <option>24</option>
+              <option>24</option>
+              <option>25</option>
+            </select>
+            
+          </div>
+
+        </div>
+
+        <div class="cardholder-name-wrap">
+          <label for="c-name" class="input-title cardholder-name">
+             Cardholder name
+          </label>
+          <input type="text" name="c-number" id="c-name" class="input-field cardholder-name" placeholder="John Doe" required>
+        </div>
+
+        <div class="buttons">
+          <button class="cancel">Cancel</button>
+            <a href="./statements.html"><button class="save" id="save-button">Save</button></a>
+        </div>
+		
+	
+   
+
+     </div>
+	 	
+  </div> 
+</div>
+
+ <script src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+ <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+ <script type="text/javascript" src="script.js"></script>   
+
+    
+
+  </body>
+</html>
+
+<script>
+    $("#save-button").on("click", function () {
+        localStorage.setItem('name', $("#c-name").val());
+    });
+</script>

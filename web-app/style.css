@@ -1,0 +1,478 @@
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+/** {
+  box-sizing: border-box;
+}*/
+
+body {
+background: linear-gradient(to right, #25c481, #25b7c4)
+}
+/*
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+	  
+	  
+      overflow: hidden;
+      background-color: #333;
+      margin-top: 100px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.7;
+      margin-bottom: 100px;
+  }
+
+
+  li {
+      float: right;
+      
+  }
+
+  li a {
+      display: inline-block;
+      color: white;
+      text-align: center;
+      padding: 25px 30px;
+      text-decoration: none;
+      margin-right: 80px;
+ }
+
+ .logo {
+   padding: 20px 25px;
+   margin-right: 300px;
+ }
+ .logo1 {
+   padding: 20px 25px;
+   margin-right: 0px;
+ }
+ .logo2 {
+   padding: 20px 25px;
+   margin-right: 0px;
+ }
+
+ .contact {
+   padding: 20px 25px;
+   margin-right: 300px;
+ }
+ .cv {
+   padding: 20px 25px;
+   margin-right: 0px;
+ }
+ .about {
+   padding: 20px 25px;
+   margin-right: 0px;
+ }
+
+ .achievements {
+   padding: 20px 25px;
+   margin-right: 0px;
+ }
+ .home {
+   padding: 20px 25px;
+   margin-right: 0px;
+ }
+
+ .barra {
+   padding: 20px 25px;
+   margin-bottom: 15px;
+ }
+
+
+
+
+body{
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: url("montana.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+
+.cvimage {
+  padding: 50px 420px;
+}
+*/
+
+
+h1{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  letter-spacing: 1.5px;
+  float:right;
+  color: #87cefa;
+  font-size: 25px;
+  
+  
+}
+
+#card{
+	width: 500px;
+	height: 250px;
+	margin: 0 auto;
+	margin-top: 15%;
+}
+
+/*
+div.cardfront {
+	position: absolute;
+	top: 50px;
+	left: 50px;
+    width: 260px;
+	border-style: dashed;
+	border-color: grey;
+	padding: 70px 70px 70px 70px;
+}
+*/
+
+ .fab {
+   width: 50px;
+   height: 50px;
+   background-color: #87cefa;
+   border-radius: 50%;
+   box-shadow: 0 6px 10px 0 #666;
+   
+   font-size: 30px;
+   line-height: 50px;
+   color: white;
+   text-align: center;   
+   
+   right: 50px;
+   bottom: 50px;
+   
+   float:left;
+  
+  transition: all 0.1s ease-in-out;
+}
+
+.fab:hover {
+   box-shadow: 0 6px 14px 0 #666;
+   transform: scale(1.05);
+}
+
+
+
+.flip-container {
+	-webkit-perspective: 1000;
+	-moz-perspective: 1000;
+	-ms-perspective: 1000;
+	perspective: 1000;
+
+	-ms-transform: perspective(1000px);
+	-moz-transform: perspective(1000px);
+	-moz-transform-style: preserve-3d; 
+	-ms-transform-style: preserve-3d; 
+}
+
+
+/* START: Accommodating for IE */
+
+.flip-container.hover .back {
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+	-o-transform: rotateY(0deg);
+	-ms-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+}
+
+.flip-container.hover .front {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+		
+/* END: Accommodating for IE */
+
+.flip-container, .front, .back {
+	width: 435px;
+	height: 258px;
+	margin: 25px auto;
+}
+
+/* flip speed goes here */
+.flipper {
+	-webkit-transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+	-ms-transition: 0.6s;
+
+	-moz-transition: 0.6s;
+	-moz-transform: perspective(1000px);
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	border: 1px solid #E3E3E3;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+  -webkit-transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: rotateY(0deg);
+
+  -moz-transition: 0.6s;
+  -moz-transform-style: preserve-3d;
+  -moz-transform: rotateY(0deg);
+
+  -o-transition: 0.6s;
+  -o-transform-style: preserve-3d;
+  -o-transform: rotateY(0deg);
+
+  -ms-transition: 0.6s;
+  -ms-transform-style: preserve-3d;
+  -ms-transform: rotateY(0deg);
+
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+*/
+/* front pane, placed above back */
+.front {
+	-webkit-transform: rotateY(0deg);
+	-ms-transform: rotateY(0deg);
+
+	z-index: 2;
+}
+
+/* back, initially hidden pane */
+.back {
+	-webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -o-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+
+/* card styles goes here */
+
+.card{
+	background: linear-gradient( rgba(255, 255, 255, 1) 25%, rgba(255,255,255,0.2) ), #ddd;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 2px 10px rgba(51,51,51, 0.2);
+	-moz-box-shadow: 0 2px 10px rgba(51,51,51, 0.2);
+	box-shadow: 0 2px 10px rgba(51,51,51, 0.2);
+	box-sizing: border-box;
+	font-family: 'Source Sans Pro', sans-serif;
+	padding: 10px;
+}
+
+.card.back{
+	text-align: right;
+	float: left;
+}
+
+.card-provider{
+	text-align: right;
+	min-height: 40px; /* to remove image loading div resize */
+	float: left;
+}
+
+.card-provider .c-image{
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 18px;	
+	float: left;	
+}
+
+
+.input-title{
+	text-align: left;
+	
+}
+
+#c-number{
+	float: left;
+}
+
+#c-name{
+	float: center;
+}
+
+
+
+.input-title,
+.disclaimer{
+	color: #737373;
+	font-weight: 400;
+	font-size: 15px;
+	display: block;
+}
+
+.input-field{
+	display: block;
+	padding: 13px 10px;
+	border: 1px solid #D9D9D9;
+	border-radius: 4px;
+	margin: 10px 0 15px;
+	font-size: 16px;
+	box-shadow: inset 0 1px 5px rgba(0,0,0,0.25);
+}
+
+.input-field.options{
+	-webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  float: left;
+}
+
+.input-field.cvv-code{
+	width: 100px;
+	float: left;
+}
+
+.input-field:focus{
+	outline: 0;
+}
+
+.input-field::-webkit-input-placeholder {
+   color: #BBBBBB;
+}
+
+.input-field:-moz-placeholder { /* Firefox 18- */
+   color: #BBBBBB;  
+}
+
+.input-field::-moz-placeholder {  /* Firefox 19+ */
+   color: #BBBBBB;  
+}
+
+.input-field:-ms-input-placeholder {  
+   color: #BBBBBB;  
+}
+
+.card-number,
+.cardholder-name{
+	width: 219px;
+	float: left;
+}
+
+.inputtitle{
+	text-align: left;
+	float: left;
+}
+
+.cardholder-name-wrap{
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 20px;
+	float: left;
+	
+}
+
+/* fix for firefox */
+
+@-moz-document url-prefix() { 
+  .cardholder-name-wrap{
+     margin-right: 10px;
+  }
+}
+
+
+.card-expiry-wrap{
+	display: inline-block;
+	vertical-align: middle;
+	
+}
+
+.custom-dropdown{
+	display: inline-block;
+	margin-right: 6px;
+	float:left;
+	
+}
+
+.custom-dropdown .options{
+	padding-right: 33px;
+	
+}
+
+.custom-dropdown .select-icon{
+	position: absolute;
+	width: 12px;
+	top: 24px;
+  right: 13px;
+  
+}
+
+.cvv-wrap{
+	display: inline-block;
+	text-align: left;
+	clear: right;
+	float: left;
+	padding-left: 20px;
+}
+
+
+
+
+/* navigation buttons styles */
+
+
+.buttons{
+	text-align: center;
+	padding-top: 20px;
+}
+
+.buttons button{
+  cursor: pointer;
+}
+
+.buttons button:focus{
+	outline: 0;
+}
+
+.buttons button:disabled{
+  cursor: not-allowed;
+}
+
+.cancel,
+.save{
+	padding: 10px 20px;
+	border: 0;
+	background: #fff;
+	border-radius: 3px;
+	margin: 0 5px;
+	font-size: 15px;
+	float:left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
