@@ -1,3 +1,4 @@
+import dateutil.parser
 from flask import Flask, request, json
 import sqlite3
 import os.path
@@ -22,6 +23,10 @@ def get_transactions():
 @app.route('/transactions', methods=['POST'])
 def add_transaction():
     date = request.form["date"]
+    try:
+        dateutil.parser.parse(date)
+    except ValueError:
+        return "Invalid Date", 400
     merchant = request.form["merchant"]
     amount = request.form["amount"]
     charge = request.form["charge"]
