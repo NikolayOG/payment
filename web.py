@@ -49,7 +49,7 @@ def add_transaction():
     c.execute('INSERT INTO transactions(date, merchant, amount, charge, total) VALUES(?, ?, ?, ?, ?)', t)
     conn.commit()
     fraud = fraudService.detect_fraud_json(util.get_transactions_db(include_id=True))
-    if fraud[-1][1] == 1:
+    if fraud[-1][1] == -1:
         c.execute('UPDATE transactions SET fraud = 1 WHERE id = ?', (fraud[-1][0] + 1,))
         conn.commit()
     c.close()
