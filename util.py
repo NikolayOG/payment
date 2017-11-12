@@ -14,8 +14,8 @@ def get_transactions_db(include_id = False):
             data = dict(zip(['date', 'merchant', 'amount', 'charge', 'total', 'id'], row))
             responseData.append(data)
     else:
-        for row in c.execute("SELECT date, merchant, amount, charge, total, id FROM transactions"):
-            data = dict(zip(['date', 'merchant', 'amount', 'charge', 'total'], row))
+        for row in c.execute("SELECT date, merchant, amount, charge, total, fraud FROM transactions"):
+            data = dict(zip(['date', 'merchant', 'amount', 'charge', 'total', 'fraud'], row))
             responseData.append(data)
     c.close()
     return responseData

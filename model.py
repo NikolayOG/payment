@@ -4,7 +4,6 @@ from sklearn.ensemble import IsolationForest
 
 # data = pd.read_csv("mydata.csv") # csvcheck the format of my data
 def detect_fraud(data):
-    import pdb; pdb.set_trace()
     clf = IsolationForest(max_samples=1000)
     X_train = pd.get_dummies(data)
     del X_train['id']

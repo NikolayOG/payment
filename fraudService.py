@@ -3,7 +3,6 @@ import dateutil.parser
 import pandas as pd
 
 import model
-import util
 
 
 def detect_fraud_json(rows):
@@ -19,9 +18,4 @@ def detect_fraud_json(rows):
         json_data["day"][id] = date.day
         json_data["hour"][id] = date.hour
 
-    return dict(json_data)
-
-data = util.get_transactions_db(include_id=True)
-detData = detect_fraud_json(data)
-print(detData)
-print(model.detect_fraud(pd.DataFrame.from_dict(detData)))
+    return model.detect_fraud(pd.DataFrame.from_dict(json_data))
