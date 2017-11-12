@@ -8,7 +8,6 @@ import model
 def detect_fraud_json(rows):
     json_data = collections.defaultdict(dict)
     for row in rows:
-        print(row)
         id = row["id"] - 1
         json_data["place"][id] = row["merchant"]
         json_data["id"][id] = id

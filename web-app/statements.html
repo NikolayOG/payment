@@ -78,7 +78,12 @@ var vm = new Vue({
         },
         makeTransaction: function () {
             if (!(this.$data.transaction_amount === null && this.$data.transaction_merchant === null)) {
-                $.post()
+                var postData = {
+                    merchant: this.$data.transaction_merchant,
+                    amount: this.$data.transaction_amount,
+                    date:  new Date().toISOString()
+                };
+                $.post('http://localhost:5000/transactions', postData)
             }
         }
     }
