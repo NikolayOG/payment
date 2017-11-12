@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, json
 import sqlite3
 import os.path
 
@@ -16,7 +16,7 @@ db_path = os.path.join(BASE_DIR, "db.sqlite")
 @app.route('/transactions',  methods=['GET'])
 def get_transactions():
     responseData = util.get_transactions_db()
-    return str(responseData)
+    return json.dumps(responseData)
 
 
 @app.route('/transactions', methods=['POST'])
