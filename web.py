@@ -2,6 +2,8 @@ from flask import Flask, request
 import sqlite3
 import os.path
 
+import util
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -13,13 +15,7 @@ db_path = os.path.join(BASE_DIR, "db.sqlite")
 
 @app.route('/transactions',  methods=['GET'])
 def get_transactions():
-    conn = sqlite3.connect(db_path)
-    c = conn.cursor()
-    responseData = []
-    for row in c.execute("SELECT date, merchant, amount, charge, total FROM transactions"):
-        data = dict(zip(['date', 'merchant', 'amount', 'charge', 'total'], row))
-        responseData.append(data)
-    c.close()
+    responseData = util.get_transactions_db()
     return str(responseData)
 
 
@@ -38,7 +34,6 @@ def add_transaction():
     conn.commit()
     c.close()
     return "OK"
-
 
 if __name__ == '__main__':
     app.run()
