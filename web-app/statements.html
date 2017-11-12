@@ -29,7 +29,7 @@
                 <tbody>
                 <tr v-for="transaction in transactions">
                     <td v-if="transaction.fraud == 0">{{ transaction.date }}</td><td class="fraud-style" v-else>{{ transaction.date }}</td>
-                    <td v-if="transaction.fraud == 0"> &pound;{{ transaction.amount }}  <span class="badge">+ 0.1</span></td><td class="fraud-style" v-else> &pound; {{ transaction.amount }}</td>
+                    <td v-if="transaction.fraud == 0"> &pound;{{ transaction.amount }}  <span class="badge"> +{{ transaction.charge }}</span></td><td class="fraud-style" v-else> &pound; {{ transaction.amount }}</td>
                     <td v-if="transaction.fraud == 0">{{ transaction.merchant }}</td><td class="fraud-style" v-else>{{ transaction.merchant }}</td>
                 </tr>
                 </tbody>
@@ -66,7 +66,7 @@ var vm = new Vue({
     el: '#tran',
     data: {
         transactions:[],
-        saved_balance: 10.30,
+        saved_balance: 0,
         transaction_amount: null,
         transaction_merchant: null
     },
@@ -75,6 +75,12 @@ var vm = new Vue({
             console.log(items[0]);
             items = items.replace(/'/g, '"')
             this.$data.transactions = JSON.parse(items);
+            for(var i = 0; i < this.$data.transactions.length; i++) {
+                this.$data.transactions[i].charge = Math.round(this.$data.transactions[i].charge * 100) / 100;
+                if(this.$data.transactions[i].fraud == 0)
+                    this.$data.saved_balance += this.$data.transactions[i].charge;
+            }
+            this.$data.saved_balance = Math.round(this.$data.saved_balance * 100) / 100;
         },
         makeTransaction: function () {
             if (!(this.$data.transaction_amount === null && this.$data.transaction_merchant === null)) {

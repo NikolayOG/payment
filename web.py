@@ -4,6 +4,8 @@ import dateutil.parser
 import sqlite3
 import os.path
 
+from kafka import KafkaProducer
+
 import fraudService
 import util
 
@@ -39,26 +41,36 @@ def add_transaction():
         amount = float(request.form["amount"])
     except ValueError:
         return "Invalid amount", 400
-    charge = amount - int(amount)
-    if charge > 0.8:
-        charge = 1 - charge
-    elif 0.5 > charge > 0.30:
-        charge = 0.5 - charge
-    else:
-        charge = 0
-    total = charge + amount
+    # charge = amount - int(amount)
+    # if charge > 0.8:
+    #     charge = 1 - charge
+    # elif 0.5 > charge > 0.30:
+    #     charge = 0.5 - charge
+    # else:
+    #     charge = 0
+    # total = charge + amount
 
-    t = (date, merchant, amount, charge, total)
-    conn = sqlite3.connect(db_path, isolation_level=None)
-    c = conn.cursor()
-    c.execute('INSERT INTO transactions(date, merchant, amount, charge, total) VALUES(?, ?, ?, ?, ?)', t)
-    conn.commit()
-    fraud = fraudService.detect_fraud_json(util.get_transactions_db(include_id=True))
-    if fraud[-1][1] == -1:
-        c.execute('UPDATE transactions SET fraud = 1 WHERE id = ?', (fraud[-1][0] + 1,))
-        conn.commit()
-    c.close()
-    return "OK " + str(fraud[-1][1])
+    data = {
+        'date': date,
+        'merchant': merchant,
+        'amount': amount
+    }
+
+    producer = KafkaProducer(bootstrap_servers='localhost:9092')
+    producer.send('test', json.dumps(data))
+    producer.flush()
+    #
+    # t = (date, merchant, amount, charge, total)
+    # conn = sqlite3.connect(db_path, isolation_level=None)
+    # c = conn.cursor()
+    # c.execute('INSERT INTO transactions(date, merchant, amount, charge, total) VALUES(?, ?, ?, ?, ?)', t)
+    # conn.commit()
+    # fraud = fraudService.detect_fraud_json(util.get_transactions_db(include_id=True))
+    # if fraud[-1][1] == -1:
+    #     c.execute('UPDATE transactions SET fraud = 1 WHERE id = ?', (fraud[-1][0] + 1,))
+    #     conn.commit()
+    # c.close()
+    return "OK"
 
 if __name__ == '__main__':
     app.run()
