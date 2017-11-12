@@ -76,8 +76,10 @@ var vm = new Vue({
             items = items.replace(/'/g, '"')
             this.$data.transactions = JSON.parse(items);
             for(var i = 0; i < this.$data.transactions.length; i++) {
-                this.$data.saved_balance += this.$data.transactions[i].charge;
+                if(this.$data.transactions[i].fraud == 0)
+                    this.$data.saved_balance += this.$data.transactions[i].charge;
             }
+            this.$data.saved_balance = Math.round(this.$data.saved_balance * 100) / 100;
         },
         makeTransaction: function () {
             if (!(this.$data.transaction_amount === null && this.$data.transaction_merchant === null)) {
